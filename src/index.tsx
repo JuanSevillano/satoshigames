@@ -12,7 +12,7 @@ const App = lazy(() =>
     import('./App'),
     new Promise(resolve => setTimeout(resolve, 1200))
   ]).then(([moduleExports]) => moduleExports));
-
+  
 
 ReactDOM.render(
   <React.StrictMode>

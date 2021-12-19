@@ -7,11 +7,18 @@ export const loadUsers = (pagination?: number) => async (dispatch: Dispatch) => 
     dispatch(loadUsersStart());
 
     try {
-        const params = !pagination ? '?page=1&results=10&seed=abc' : `?page=${pagination}&results=10&seed=abc`
-        const { data } = await api.get(params)
-        debugger
-    } catch (error) {
-        console.log(error)
+
+        const params = !pagination ? '?page=1&results=10&seed=a¡xy' : `?page=${pagination}&results=10&seed=abc`
+        const { data } = await api.get(params);
+        if (data.results) {
+            dispatch(loadUsersSuccess(data.results));
+        }
+
+    } catch (error: any) {
+
+        const _currentError = error.toJSON();
+        dispatch(loadUsersFailed(_currentError.message as string));
+
     }
 
 
