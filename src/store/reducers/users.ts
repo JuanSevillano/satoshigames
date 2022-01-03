@@ -91,10 +91,10 @@ const filterByCountry = (state: UsersI, action: FilterByCountry): UsersI => {
 const filterByCountrySuccess = (state: UsersI, action: FilterByCountrySuccess): UsersI => {
 
     const { users } = action.payload;
-    debugger
+
     const updatedState: UsersI = {
         ...state,
-        filteredUsers: users,
+        users,
         isFetching: false
     }
 
