@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Select from 'react-select';
-import { filterUsersByName } from '../store/actions/users';
+import { filterByCountry, filterUsersByName } from '../store/actions/users';
 
 const countryOptions = [
     { value: 'AU', label: 'Australia' },
@@ -27,6 +27,7 @@ const Header: FC<{}> = () => {
 
     const dispatch = useDispatch();
     const [name, setName] = useState<string>('');
+    const [country, setCountry] = useState<any>([]);
 
 
     useEffect(() => {
@@ -37,6 +38,11 @@ const Header: FC<{}> = () => {
     }, [name])
 
 
+    useEffect(() => {
+
+        dispatch(filterByCountry(country))
+
+    }, [country, dispatch])
 
 
     return (
@@ -75,7 +81,12 @@ const Header: FC<{}> = () => {
                         x-model="q"
                         className="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent" />
                 </div>
-                <Select className="w-80 h-full" isMulti options={countryOptions} />
+                <Select
+                    onChange={val => setCountry(val)}
+                    value={country}
+                    isMulti
+                    className="w-80 h-full"
+                    options={countryOptions} />
             </div>
         </div>
     )
