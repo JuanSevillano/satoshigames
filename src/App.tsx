@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './App.css';
+import Header from './components/Header';
 import UserList from './components/UserList';
 import { loadUsers } from './store/actions/users';
 
@@ -9,16 +10,21 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadUsers(1))
+
+    dispatch(loadUsers())
+
+    // eslint-disable-next-line 
   }, [])
 
   return (
-
-    <h1 className="text-7xl text-center uppercase font-bold underline">
-
+    <div className="main max-w-screen-xl m-auto" >
+      <Header />
       <UserList />
+    </div >
 
-    </h1>
+
+
+
 
   );
 }
