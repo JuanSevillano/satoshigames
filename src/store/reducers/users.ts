@@ -114,6 +114,8 @@ const filterByCountryFailed = (state: UsersI, action: FilterByCountryFailed): Us
     return updatedState
 }
 
+
+
 const usersReducer = (state: UsersI = initialState, action: any): UsersI => {
     switch (action.type) {
         case LOAD_USERS_START: return loadUsersStart(state, action);

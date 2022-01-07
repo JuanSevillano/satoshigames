@@ -42,7 +42,8 @@ const Header: FC<{}> = () => {
 
         dispatch(filterByCountry(country))
 
-    }, [country, dispatch])
+        // eslint-disable-next-line
+    }, [country])
 
 
     return (

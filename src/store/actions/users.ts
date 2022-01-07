@@ -54,7 +54,7 @@ export const filterByCountry = (countries: [], pagination?: number) => async (di
         const ctrValues = values.join(',').toLowerCase();
         const params = !pagination ? `?page=1&results=15&seed=abc&nat=${ctrValues}` : `?page=${pagination}&results=15&seed=abc&nat=${ctrValues}`
         const { data } = await api.get(params);
-        debugger
+
         if (data.results) {
             dispatch(filterByCountrySuccess(data.results));
         }
