@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 
 import store from './store/store';
+import Spinner from './components/Spinner';
 
 
 const App = lazy(() =>
@@ -12,16 +13,16 @@ const App = lazy(() =>
     import('./App'),
     new Promise(resolve => setTimeout(resolve, 1200))
   ]).then(([moduleExports]) => moduleExports));
-  
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Suspense fallback={<h1>Cargandoooooo...</h1>}>
+      <Suspense fallback={<Spinner />} >
         <App />
       </Suspense>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 );
 
